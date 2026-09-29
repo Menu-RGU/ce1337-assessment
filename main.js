@@ -15,5 +15,10 @@ name = prompt.question("Please enter your name: ");
 //The correctAnswer is added to score
 score = score += correctAnswer
 
+//Object that for name and final score
+let results = {displayName: name,
+    finalScore: score
+}
+
 //Displaying the name that the user inputted plus the final score
-console.log (name + (" Your final score is: ") + score);
+console.log (results.displayName + (" Your final score is: ") + results.finalScore);
