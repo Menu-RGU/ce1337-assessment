@@ -3,8 +3,8 @@ const prompt = require("readline-sync");
 // Score that starts set at zero
 let score = Number(0);
 
-//Score recived depending on a correct answer
-let correctAnswer = Number(1);
+//Amount of score recived depending on a correct answer
+let plusScore = Number(1);
 
 // Name that is inputed
 let name = ("");
@@ -12,8 +12,8 @@ let name = ("");
 //Asking the user to input a name
 name = prompt.question("Please enter your name: ");
 
-//The correctAnswer is added to score
-score = score += correctAnswer
+//The plusScore is added to score
+score = score += plusScore
 
 //Object that for name and final score
 let results = {displayName: name,
