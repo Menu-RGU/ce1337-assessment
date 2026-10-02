@@ -1,12 +1,45 @@
-const prompt = require('readline-sync'); 
+// Currently the program runs fine however the program requires a main loop to restart the program so the player can play for another time.
 
-/*
-Problem ----
-- Questions wont continue to the next one after an incorrect answer in the checkAnswer(); function
-*/
+const prompt = require('readline-sync');
 
 let userChoice; 
 let currentQuestion = 0; 
+let playerName;
+let mainLoop = true; 
+let playerChoice;
+
+function playerNameSelection()
+{
+    playerName = prompt.question("Please enter your name: "); 
+}
+
+
+function mainMenu() 
+{
+    playerChoice = Number(prompt.question("-----------MAIN MENU-----------"+ "\nHey " + playerName + "!" +"\n\n1.Start Quiz\n2.End quiz!\n\n" + "Please select one of the choices above:"));
+}
+
+function startGame(mainMenu) 
+{
+    while (mainLoop)
+        {
+            if(playerChoice == 1)
+            {
+                console.log( playerName + " continue to choose the category: "); 
+                break;
+            }
+            else if (playerChoice == 2)
+            {
+                console.log( playerName + " your choice is : End quiz!"); 
+                break; 
+            }
+            else
+            {
+                playerChoice = Number(prompt.question("Invalid input please try again please select an option (1 or 2): "));
+                continue; 
+            }
+        }    
+}
 
 const questions = 
 {
@@ -158,6 +191,9 @@ function checkAnswer()
 }
 
 
+playerNameSelection();
+mainMenu();
+startGame(); 
 
 let category = chooseCategory(); 
 
@@ -166,6 +202,10 @@ checkAnswer();
 currentQuestion++;
 
 askQuestion(category);
+checkAnswer();
+currentQuestion++;
+
+askQuestion(category); 
 checkAnswer();
 currentQuestion++;
 
