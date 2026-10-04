@@ -1,21 +1,23 @@
 const prompt = require('readline-sync'); 
 
+// Players name, Main loop and player choice variables are stored
 let playerName;
 let mainLoop = true; 
 let playerChoice;
 
 
-
+// Functions that asks and stores the players name
 function playerNameSelection()
 {
     playerName = prompt.question("Please enter your name: "); 
 }
 
+//Function that asks the user to input a number to either start or end the quiz
 function mainMenu() 
 {
     playerChoice = Number(prompt.question("-----------MAIN MENU-----------"+ "\nHey " + playerName + "!" +"\n\n1.Start Quiz\n2.End quiz!\n\n" + "Please select one of the choices above:"));
 }
-
+//This function will confirm the players choice to either to start playing or quit the game. It will continue to loop until a correct choice is made.
 function startGame(mainMenu) 
 {
     while (mainLoop)
@@ -38,20 +40,25 @@ function startGame(mainMenu)
         }    
 }
 
+//The name input function is called
 playerNameSelection();
+//The menu function is called
 mainMenu();
+//The category function is called
 startGame(); 
 
 // Score that starts set at zero
 let score = Number(0);
 
-//Amount of score recived depending on a correct answer
+//Amount of score received depending on a correct answer
 let plusScore = Number(1);
 
+//Variable to store the users answer choice
 let userChoice; 
+//Variable for what question the user is currently on
 let currentQuestion = 0; 
 
-
+//An object containing the questions for computer science, music and random facts
 const questions = 
 {
     computerScience: 
@@ -142,6 +149,7 @@ const questions =
     ]
 };
 
+// Function that will ask the user to choose a category
 function chooseCategory() 
 {
 
@@ -166,7 +174,7 @@ function chooseCategory()
     }
 
 }
-
+//This function proceeds through the chosen category and asks the user to input their answer
 function askQuestion(category) 
 {
 
@@ -184,9 +192,11 @@ function askQuestion(category)
         console.log(questions.randomFacts[currentQuestion].question);
         break; 
     }
+    
     userChoice = Number(prompt.question("Please enter your answer: "));
+    
 }
-
+// This function checks the answer and if correct, displays a message and adds score. If not, displays an incorrect message.
 function checkAnswer()
 {
 
@@ -208,9 +218,11 @@ function checkAnswer()
 
 let category = chooseCategory(); 
 
-
+//The questions function is called with the corresponding category that the user has chosen
 askQuestion(category);
+//The answers are checked with this called function
 checkAnswer();
+//The current question is advanced by one to the next question
 currentQuestion++;
 
 
@@ -227,7 +239,7 @@ askQuestion(category);
 checkAnswer();
 
 
-//Object that for name and final score
+//Object that contains name and final score
 let results = {displayName: playerName,
     finalScore: score
 }
