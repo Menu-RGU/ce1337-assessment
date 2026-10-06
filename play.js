@@ -4,7 +4,7 @@ const prompt = require('readline-sync');
 let playerName;
 // Makes sure the main game loop is running (true means the quiz is running and is set to false inside the condition to end the loop)
 let mainLoop = true; 
-// 
+
 let playerChoice;
 
 // Score that starts set at zero
@@ -51,6 +51,7 @@ function startGame()
             {
                 console.log( playerName + " your choice is : End quiz!"); 
                 // sends the value false back to the variable mainLoop so the main game loop gets terminated
+                mainLoop = false;
                 return false; 
             }
             // makes sure the player only enters 1 or 2 and if not asks them repetedly to enter a valid answer
@@ -229,7 +230,7 @@ function checkAnswer(category)
             if (userChoice == questions.randomFacts[currentQuestion].questionAnswer)
             {
                 // this adds one point to the score if the answer is correct
-                core += plusScore;
+                score += plusScore;
             }
             break; 
         }
